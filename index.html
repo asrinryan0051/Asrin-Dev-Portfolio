@@ -262,72 +262,110 @@
     font-size: 1.2rem;
     line-height: 1rem;
 }
-/* --- FINAL MOBILE & LAYOUT FIXES --- */
+/* --- FINAL MOBILE & MASTER FIXES --- */
 
-/* 1. PREVENT SIDE SCROLLING (Fixes "Shifted to Left") */
+/* 1. Global Reset for Mobile Scroll */
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Stops side-scrolling */
 }
 
-/* 2. FORCE MOBILE LAYOUT */
-@media (max-width: 600px) {
-    /* Make grids stack vertically on phone */
-    .auto-grid, .skills-grid, .project-row, .project-row.reversed {
-        display: flex;
+/* 2. Tablet & Mobile Adjustments (Max Width 900px) */
+@media (max-width: 900px) {
+    /* Fix Hero Text Size */
+    .hero h1 { 
+        font-size: 3rem; 
+        line-height: 1.1;
+    }
+    
+    /* Stack Projects Vertically */
+    .project-row, .project-row.reversed { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+        direction: ltr; 
+        margin-bottom: 100px; 
+    }
+    .project-info { direction: ltr; }
+}
+
+/* 3. Smartphone Master Layout (Max Width 768px) */
+@media (max-width: 768px) {
+    
+    /* --- NAVIGATION BAR FIX --- */
+    .navbar {
+        position: relative; /* Un-stick it so it pushes content down */
+        height: auto;
+        padding: 15px 0;
+        background: #0a0a0c; /* Solid background */
+    }
+
+    .nav-content {
+        height: auto; /* Let it grow */
+        flex-direction: column; /* Stack Logo on top of Links */
+        gap: 20px;
+    }
+
+    .nav-links {
+        display: flex !important; /* FORCE VISIBLE (Overrides the hidden rule) */
         flex-direction: column;
+        align-items: center;
+        gap: 15px;
         width: 100%;
     }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem; /* Bigger tap targets */
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05); /* Subtle separator */
+    }
+
+    /* --- LAYOUT SPACING FIXES --- */
+    .section {
+        padding: 60px 0; /* Reduce huge gaps between sections */
+    }
     
-    /* Reset padding so it fits screen */
-    .container {
+    .hero {
+        padding-top: 40px; /* Adjust top spacing since Nav is relative */
+        text-align: center;
+    }
+    
+    .hero p {
+        margin: 0 auto 40px; /* Center the description */
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
         padding: 0 20px;
     }
-    
-    /* Fix Hero Text Alignment */
-    .hero {
-        text-align: left; /* Or center if you prefer */
-        padding-top: 120px;
-    }
-}
-
-/* 3. FIX HUGE GAP (From bug.png) */
-section#work {
-    padding-bottom: 20px !important;
-}
-section#automotive {
-    padding-top: 40px !important;
-}
-
-/* --- PASTE THIS AT THE END OF YOUR CSS FILE --- */
-
-@media (max-width: 768px) {
-    /* Bug 1 Fix: Make Nav Visible & Vertical */
-    nav {
-        flex-direction: column;
-        padding: 1rem;
-    }
-    .nav-links, ul { 
-        display: flex !important;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-        align-items: center;
+    .btn {
+        width: 100%;
+        justify-content: center;
     }
 
-    /* Bug 3 Fix: Add spacing above footer */
-    .certifications {
-        margin-bottom: 80px; 
-        padding-bottom: 20px;
+    /* --- EMAIL OVERFLOW FIX --- */
+    .email-link {
+        font-size: 1.4rem; /* Smaller font to fit screen */
+        word-break: break-all; /* Forces long email to wrap line */
+        padding: 0 10px;
+    }
+
+    /* --- AUTOMOTIVE SECTION FIX --- */
+    .auto-grid {
+        grid-template-columns: 1fr; /* Stack cards */
     }
     
-    /* Extra Fix: Prevent Email from cutting off */
-    h1, h2, p, a {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    .contact-email {
-        font-size: 1.2rem; /* Adjusts text size for mobile */
+    .auto-header h2 {
+        font-size: 2rem !important; /* Smaller header */
     }
 }
     </style>
@@ -451,6 +489,7 @@ section#automotive {
                 
                 <div style="margin-top: 30px;">
                     <a href="https://github.com/asrinryan0051/Car-Power-Classifier" class="btn btn-outline" target="_blank">View Code</a>
+                    <a href="https://car-power-classifier.streamlit.app/" class="btn btn-outline" style="border:none; color: var(--primary);" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -480,6 +519,36 @@ section#automotive {
                 <div style="margin-top: 30px;">
                     <a href="https://github.com/asrinryan0051/Car-Performance-Analytics-Dashboard" class="btn btn-outline" target="_blank">View Code</a>
                     <a href="https://asrinryan0051.github.io/Car-Performance-Analytics-Dashboard/" class="btn btn-outline" style="border:none; color: var(--primary);" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="project-row reversed" style="margin-top: 130px;">
+            <div class="project-preview">
+                <img src="images/redlineAX.png" alt="RED-LINE ANALYTICS UI">
+            </div>
+            <div class="project-info">
+                <span class="project-role">AUTOMOTIVE EXPERT SYSTEM</span>
+                <h3>Red-Line Analytics</h3>
+                <p class="project-desc">Red-Line Analytics is a physics-based virtual dyno that predicts real-world vehicle performance using interpretable rule-driven logic. It simulates tuning upgrades and delivers clear stock-vs-tuned performance insights with professional reporting.</p>
+                <ul class="feature-list">
+                    <li>0–100 km/h prediction and curb weight estimation</li>
+                    <li>Rule-driven tuning simulation</li>
+                    <li>Stock vs Tuned performance comparison</li>
+
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Automotive Analytics</span>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <a href="https://github.com/asrinryan0051/RED-LINE-ANALYTICS" class="btn btn-outline" target="_blank">View Code</a>
+                    <a href="https://red-line-analytics.streamlit.app/" class="btn btn-outline" style="border:none; color: var(--primary);" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
