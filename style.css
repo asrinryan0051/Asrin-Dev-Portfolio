@@ -16,12 +16,17 @@
 /* --- BASE STYLES --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* CRITICAL FIX: Stops side-scrolling */
+}
+
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.7;
-    overflow-x: hidden;
     background-image: 
         radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.08) 0%, transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 25%);
@@ -95,7 +100,10 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 /* --- SKILLS TICKER --- */
 .tech-strip {
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    padding: 20px 0; background: var(--bg-surface); overflow: hidden;
+    padding: 20px 0; background: var(--bg-surface);
+    width: 100%; /* Ensure it spans full width */
+    max-width: 100vw; /* CRITICAL: Prevent it from stretching the page */
+    overflow: hidden; /* CRITICAL: Hide overflowing text */
 }
 .tech-track {
     display: flex; gap: 50px; animation: scroll 20s linear infinite;
@@ -242,54 +250,48 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 
 /* --- FINAL MOBILE & MASTER FIXES --- */
 
-/* 1. Global Reset for Mobile Scroll */
-html, body {
-    width: 100%;
-    overflow-x: hidden; /* Stops side-scrolling */
-}
-
-/* 2. Tablet & Mobile Adjustments (Max Width 900px) */
+/* Tablet Adjustments */
 @media (max-width: 900px) {
     .container {
-        padding: 0 20px; /* Ensured Padding */
+        padding: 0 30px; /* Stronger padding */
     }
     
-    /* Fix Hero Text Size */
     .hero h1 { 
         font-size: 3rem; 
         line-height: 1.1;
-        word-wrap: break-word; /* Prevents long text from overflowing */
     }
     
-    /* Stack Projects Vertically */
     .project-row, .project-row.reversed { 
         grid-template-columns: 1fr; 
-        gap: 40px; 
+        gap: 50px; 
         direction: ltr; 
         margin-bottom: 100px; 
     }
     .project-info { direction: ltr; }
 }
 
-/* 3. Smartphone Master Layout (Max Width 768px) */
+/* Smartphone Adjustments (The Critical Fix) */
 @media (max-width: 768px) {
     
-    /* --- NAVIGATION BAR FIX --- */
+    .container {
+        padding: 0 25px !important; /* Force padding on mobile */
+    }
+
     .navbar {
-        position: relative; /* Un-stick it so it pushes content down */
+        position: relative;
         height: auto;
         padding: 15px 0;
-        background: #0a0a0c; /* Solid background */
+        background: #0a0a0c;
     }
 
     .nav-content {
-        height: auto; /* Let it grow */
-        flex-direction: column; /* Stack Logo on top of Links */
+        height: auto;
+        flex-direction: column;
         gap: 20px;
     }
 
     .nav-links {
-        display: flex !important; /* FORCE VISIBLE (Overrides the hidden rule) */
+        display: flex !important;
         flex-direction: column;
         align-items: center;
         gap: 15px;
@@ -299,69 +301,72 @@ html, body {
     .nav-links a {
         display: block;
         padding: 10px;
-        font-size: 1.1rem; /* Bigger tap targets */
+        font-size: 1.1rem;
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.05); /* Subtle separator */
+        border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* --- LAYOUT SPACING FIXES --- */
     .section {
-        padding: 60px 0; /* Reduce huge gaps between sections */
+        padding: 60px 0;
     }
     
     .hero {
-        padding-top: 40px; /* Adjust top spacing since Nav is relative */
+        padding-top: 40px;
         padding-bottom: 80px;
         text-align: center;
     }
 
-    /* Added Fix: Reduce H1 size specifically for mobile to prevent edge cutting */
     .hero h1 {
         font-size: 2.5rem;
+        word-wrap: break-word; /* Prevent long titles from cutting */
     }
     
     .hero p {
-        margin: 0 auto 40px; /* Center the description */
-        padding: 0 10px; /* Add internal padding */
+        margin: 0 auto 40px;
     }
 
     .hero-stats {
         justify-content: center;
         gap: 30px;
-        flex-wrap: wrap; /* Allow wrapping on very small screens */
+        flex-wrap: wrap;
     }
 
     .hero-buttons {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        padding: 0 20px;
+        padding: 0 10px;
     }
     .btn {
         width: 100%;
         justify-content: center;
     }
 
-    /* --- EMAIL OVERFLOW FIX --- */
+    /* PROJECT CARD FIXES */
+    .project-row, .project-row.reversed {
+        display: flex; /* Use Flex instead of Grid for better mobile control */
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .project-info h3 {
+        font-size: 1.8rem; /* Smaller font to fit screen */
+    }
+
     .email-link {
-        font-size: 1.4rem; /* Smaller font to fit screen */
-        word-break: break-all; /* Forces long email to wrap line */
+        font-size: 1.4rem;
+        word-break: break-all;
         padding: 0 10px;
         line-height: 1.3;
     }
-    
-    .contact-section h2 {
-        font-size: 2rem !important;
-        padding: 0 10px;
-    }
 
-    /* --- AUTOMOTIVE SECTION FIX --- */
     .auto-grid {
-        grid-template-columns: 1fr; /* Stack cards */
+        grid-template-columns: 1fr;
     }
     
     .auto-header h2 {
-        font-size: 2rem !important; /* Smaller header */
+        font-size: 2rem !important;
     }
 }
