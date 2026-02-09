@@ -1,0 +1,367 @@
+/* --- HIGH-END DARK THEME VARIABLES --- */
+:root {
+    --bg-body: #0a0a0c;
+    --bg-surface: #131316;
+    --bg-glass: rgba(25, 25, 30, 0.6);
+    --primary: #00f2ff; /* Neon Cyan */
+    --primary-dim: rgba(0, 242, 255, 0.1);
+    --secondary: #7000ff; /* Deep Violet for gradients */
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --border: rgba(255, 255, 255, 0.08);
+    --font-main: 'Outfit', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+/* --- BASE STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 25%);
+}
+
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+.code-font { font-family: var(--font-code); }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* --- LAYOUT UTILITIES --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 4px;
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px;
+    cursor: pointer; position: relative; overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--primary); color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0, 242, 255, 0.5); transform: translateY(-2px); }
+
+.btn-outline {
+    background: transparent; border: 1px solid var(--border); color: var(--text-main);
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+/* --- NAVBAR --- */
+.navbar {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+.nav-content {
+    height: 80px; display: flex; justify-content: space-between; align-items: center;
+}
+.logo { font-size: 1.5rem; font-weight: 700; }
+.logo span { color: var(--primary); }
+.nav-links { display: flex; gap: 40px; }
+.nav-links a { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+.nav-links a:hover { color: var(--primary); }
+
+/* --- HERO SECTION (High Impact) --- */
+.hero {
+    padding: 200px 0 150px;
+    position: relative;
+}
+.hero-label {
+    color: var(--primary); font-family: var(--font-code);
+    font-size: 0.9rem; margin-bottom: 20px; display: block;
+}
+.hero h1 {
+    font-size: 4.5rem; margin-bottom: 25px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+    font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin-bottom: 40px;
+}
+.hero-stats {
+    display: flex; gap: 50px; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 30px;
+}
+.stat-item strong { display: block; font-size: 2rem; color: var(--text-main); }
+.stat-item span { font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-code); }
+
+/* --- SKILLS TICKER --- */
+.tech-strip {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 0; background: var(--bg-surface); overflow: hidden;
+}
+.tech-track {
+    display: flex; gap: 50px; animation: scroll 20s linear infinite;
+    width: max-content;
+}
+.tech-item { color: var(--text-muted); font-weight: 600; font-size: 1.1rem; white-space: nowrap; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- DETAILED PROJECT LAYOUT (Alternating) --- */
+.project-row {
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px;
+    margin-bottom: 150px; align-items: center;
+}
+.project-row.reversed { grid-template-columns: 0.8fr 1.2fr; direction: rtl; }
+.project-row.reversed .project-info { direction: ltr; }
+
+.project-preview {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+}
+.project-preview img { width: 100%; display: block; transition: transform 0.5s; }
+.project-preview:hover img { transform: scale(1.03); }
+
+.project-info h3 { font-size: 2.2rem; margin-bottom: 15px; }
+.project-role { color: var(--primary); font-family: var(--font-code); font-size: 0.9rem; margin-bottom: 20px; display: block; }
+.project-desc { color: var(--text-muted); margin-bottom: 30px; font-size: 1.05rem; }
+
+.tech-tags { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 35px; }
+.tech-tag {
+    background: var(--primary-dim); color: var(--primary);
+    padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-family: var(--font-code);
+}
+
+.feature-list { margin-bottom: 30px; }
+.feature-list li {
+    list-style: none; padding-left: 25px; position: relative; color: var(--text-muted); margin-bottom: 10px;
+}
+.feature-list li::before {
+    content: '▹'; position: absolute; left: 0; color: var(--primary);
+}
+
+/* --- SKILL GRID --- */
+.skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
+}
+.skill-box {
+    background: var(--bg-surface); padding: 30px; border: 1px solid var(--border);
+    border-radius: 8px; transition: 0.3s;
+}
+.skill-box:hover { border-color: var(--primary); transform: translateY(-5px); }
+.skill-box h4 { margin-bottom: 20px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+.skill-list li {
+    display: flex; justify-content: space-between; margin-bottom: 12px;
+    color: var(--text-muted); font-size: 0.95rem;
+}
+
+/* --- CONTACT & FOOTER --- */
+.contact-section { text-align: center; max-width: 600px; margin: 0 auto; }
+.email-link {
+    font-size: 2.5rem; font-weight: 700; color: var(--text-main); margin: 30px 0; display: block;
+}
+.email-link:hover { color: var(--primary); }
+
+footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px; text-align: center; color: var(--text-muted); }
+
+/* --- AUTOMOTIVE SECTION STYLES --- */
+.auto-header {
+    margin-bottom: 60px;
+}
+
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.auto-card {
+    background: linear-gradient(145deg, #131316, #0f0f12);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 12px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.auto-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    background: rgba(0, 242, 255, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.auto-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.auto-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.auto-list {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+.auto-list li {
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.auto-list li::before {
+    content: '•';
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1rem;
+}
+
+/* --- FINAL MOBILE & MASTER FIXES --- */
+
+/* 1. Global Reset for Mobile Scroll */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Stops side-scrolling */
+}
+
+/* 2. Tablet & Mobile Adjustments (Max Width 900px) */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 20px; /* Ensured Padding */
+    }
+    
+    /* Fix Hero Text Size */
+    .hero h1 { 
+        font-size: 3rem; 
+        line-height: 1.1;
+        word-wrap: break-word; /* Prevents long text from overflowing */
+    }
+    
+    /* Stack Projects Vertically */
+    .project-row, .project-row.reversed { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+        direction: ltr; 
+        margin-bottom: 100px; 
+    }
+    .project-info { direction: ltr; }
+}
+
+/* 3. Smartphone Master Layout (Max Width 768px) */
+@media (max-width: 768px) {
+    
+    /* --- NAVIGATION BAR FIX --- */
+    .navbar {
+        position: relative; /* Un-stick it so it pushes content down */
+        height: auto;
+        padding: 15px 0;
+        background: #0a0a0c; /* Solid background */
+    }
+
+    .nav-content {
+        height: auto; /* Let it grow */
+        flex-direction: column; /* Stack Logo on top of Links */
+        gap: 20px;
+    }
+
+    .nav-links {
+        display: flex !important; /* FORCE VISIBLE (Overrides the hidden rule) */
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem; /* Bigger tap targets */
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05); /* Subtle separator */
+    }
+
+    /* --- LAYOUT SPACING FIXES --- */
+    .section {
+        padding: 60px 0; /* Reduce huge gaps between sections */
+    }
+    
+    .hero {
+        padding-top: 40px; /* Adjust top spacing since Nav is relative */
+        padding-bottom: 80px;
+        text-align: center;
+    }
+
+    /* Added Fix: Reduce H1 size specifically for mobile to prevent edge cutting */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        margin: 0 auto 40px; /* Center the description */
+        padding: 0 10px; /* Add internal padding */
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap; /* Allow wrapping on very small screens */
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* --- EMAIL OVERFLOW FIX --- */
+    .email-link {
+        font-size: 1.4rem; /* Smaller font to fit screen */
+        word-break: break-all; /* Forces long email to wrap line */
+        padding: 0 10px;
+        line-height: 1.3;
+    }
+    
+    .contact-section h2 {
+        font-size: 2rem !important;
+        padding: 0 10px;
+    }
+
+    /* --- AUTOMOTIVE SECTION FIX --- */
+    .auto-grid {
+        grid-template-columns: 1fr; /* Stack cards */
+    }
+    
+    .auto-header h2 {
+        font-size: 2rem !important; /* Smaller header */
+    }
+}
