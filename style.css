@@ -309,17 +309,17 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 
     /* FIX: More spacing between sections on mobile */
     .section {
-        padding: 80px 0; 
+        padding: 120px 0; 
     }
     
     /* FIX: Push Contact section down specifically */
     .contact-section {
-        padding-top: 100px;
+        padding-top: 140px;
     }
 
     /* FIX: Add space around the Tech Strip */
     .tech-strip {
-        margin: 50px 0; 
+        margin: 90px 0; 
     }
     
     .hero {
