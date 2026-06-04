@@ -183,6 +183,16 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 
 footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px; text-align: center; color: var(--text-muted); }
 
+/* Hide mobile menu elements on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { 
+    display: none; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px);
+    z-index: 999; opacity: 0; transition: opacity 0.3s ease;
+}
+.mobile-overlay.active { display: block; opacity: 1; }
+
 /* --- AUTOMOTIVE SECTION STYLES --- */
 .auto-header {
     margin-bottom: 60px;
@@ -285,41 +295,80 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 /* Smartphone Adjustments */
 @media (max-width: 768px) {
     
+    /* Keep navbar fixed at the top on mobile */
+    .navbar {
+        position: fixed;
+        height: 70px;
+        padding-top: 0; padding-bottom: 0;
+        background: rgba(10, 10, 12, 0.95);
+    }
+
+    .nav-content {
+        height: 100%;
+        flex-direction: row; /* Keeps logo and button side-by-side */
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* Show the hamburger button */
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-main);
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    /* The Sidebar */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -300px; /* Hidden offscreen by default */
+        width: 280px;
+        height: 100vh;
+        background-color: var(--bg-surface);
+        flex-direction: column !important;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 80px; /* Space so it doesn't overlap logo */
+        gap: 0;
+        transition: left 0.3s ease-in-out;
+        z-index: 1001;
+        border-right: 1px solid var(--border);
+    }
+
+    /* Slide in animation class */
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* Sidebar Links */
+    .nav-links a {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 20px 30px;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--border);
+        border-left: 4px solid transparent;
+        border-radius: 0; /* Override any global radius */
+    }
+
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.02);
+        border-left-color: var(--primary);
+        color: var(--text-main);
+    }
+
     /* FIX: Explicitly targeting left/right so vertical spacing isn't destroyed */
     .container {
         padding-left: 25px !important; 
         padding-right: 25px !important; 
     }
 
-    .navbar {
-        position: relative;
-        height: auto;
-        padding-top: 15px; padding-bottom: 15px;
-        background: #0a0a0c;
-    }
-
-    .nav-content {
-        height: auto;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .nav-links {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 10px;
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
 
     /* FIX: Safely restoring vertical spacing between sections */
     .section {
@@ -339,7 +388,7 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
     }
     
     .hero {
-        padding-top: 60px !important;
+        padding-top: 120px !important;
         padding-bottom: 80px !important;
         text-align: center;
     }
