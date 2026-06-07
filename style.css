@@ -82,6 +82,9 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 .nav-links { display: flex; gap: 40px; }
 .nav-links a { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 .nav-links a:hover { color: var(--primary); }
+.highlight {
+    color:#00f2ff; 
+}
 
 /* --- HERO SECTION --- */
 .hero {
