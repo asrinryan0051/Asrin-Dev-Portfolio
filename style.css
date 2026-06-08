@@ -50,6 +50,28 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 }
 
 /* --- BUTTONS --- */
+
+/* --- CERTIFICATION BUTTON --- */
+.btn-view-cert {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    /* background-color: var(--primary-dim); /* Uses your existing CSS variable */
+    color:  #969fac; /* Uses your existing CSS variable */
+    border: 1px solid #3f3f46;
+}
+
+.btn-view-cert:hover {
+    color:#00f2ff;
+    border: 1px solid var(--primary);
+}
 .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 32px; border-radius: 4px;
