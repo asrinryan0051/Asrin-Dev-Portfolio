@@ -63,7 +63,7 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     text-decoration: none;
     border-radius: 4px;
     transition: all 0.2s ease;
-    background-color: rgba(0, 229, 255, 0.15); /* Uses your existing CSS variable */
+    background-color: rgba(0, 229, 255, 0.15); 
     color:  #00E5ff; /* Uses your existing CSS variable */
     /* border: 1px solid #2d3538ac; */
     border: 1px solid rgba(0, 229, 255, 0.3);
@@ -71,8 +71,8 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 }
 
 .btn-view-cert:hover {
-    background-color: rgba(0, 229, 255, 0.25);
-    color:#00f2ff;
+    background-color: rgba(11, 229, 253, 0.888);
+    color:#000909;
     border: 1px solid var(--primary);
 }
 .btn {
