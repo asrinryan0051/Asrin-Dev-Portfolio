@@ -62,18 +62,19 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     font-weight: 500;
     text-decoration: none;
     border-radius: 4px;
-    transition: all 0.2s ease;
-    background-color: rgba(0, 229, 255, 0.15); 
-    color:  #00E5ff; /* Uses your existing CSS variable */
-    /* border: 1px solid #2d3538ac; */
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    background-color: rgba(11, 229, 253, 0.888);
+    color:#000909;
+    border: 1px solid var(--primary);
     transition: all 0.3s ease;
 }
 
 .btn-view-cert:hover {
-    background-color: rgba(11, 229, 253, 0.888);
+    box-shadow: 
+        0 0 8px rgba(11, 229, 253, 0.6),  /* Tight inner glow */
+        0 0 15px rgba(11, 229, 253, 0.2); /* Faint outer fade */
+    background-color: rgba(11, 229, 253, 1);
     color:#000909;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--primary);   
 }
 .btn {
     display: inline-flex; align-items: center; gap: 10px;
