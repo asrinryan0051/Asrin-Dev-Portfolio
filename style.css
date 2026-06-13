@@ -69,12 +69,17 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 }
 
 .btn-view-cert:hover {
-    box-shadow: 
-        0 0 8px rgba(11, 229, 253, 0.6),  /* Tight inner glow */
-        0 0 15px rgba(11, 229, 253, 0.2); /* Faint outer fade */
-    background-color: rgba(11, 229, 253, 1);
     color:#000909;
-    border: 1px solid var(--primary);   
+    border: 1px solid var(--primary);
+
+    background-color: rgba(11, 229, 253, 0.888); 
+    /* 3. The Multi-Layered Neon Glow */
+    box-shadow: 
+        0 0 5px  rgba(11, 229, 253, 0.8),   /* Layer 1: Tight, hot core */
+        0 0 15px rgba(11, 229, 253, 0.6),   /* Layer 2: Medium diffusion */
+        0 0 30px rgba(11, 229, 253, 0.4),   /* Layer 3: Wide ambient light */
+        0 0 60px rgba(11, 229, 253, 0.2);   /* Layer 4: Maximum bleed into the dark background */
+    transform: translateY(-2px);
 }
 .btn {
     display: inline-flex; align-items: center; gap: 10px;
