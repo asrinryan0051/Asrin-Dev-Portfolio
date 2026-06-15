@@ -77,7 +77,7 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     box-shadow: 
         0 0 5px  rgba(11, 229, 253, 0.8),   /* Layer 1: Tight, hot core */
         0 0 15px rgba(11, 229, 253, 0.6),   /* Layer 2: Medium diffusion */
-        0 0 30px rgba(11, 229, 253, 0.4),   /* Layer 3: Wide ambient light */
+        /*0 0 30px rgba(11, 229, 253, 0.4),   /* Layer 3: Wide ambient light */
         0 0 60px rgba(11, 229, 253, 0.2);   /* Layer 4: Maximum bleed into the dark background */
     transform: translateY(-2px);
 }
@@ -325,7 +325,57 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
     }
     .project-info { direction: ltr; }
 }
+/* Container to hold all cards and add spacing between them */
+.cert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Space between each card */
+  margin-top: 20px;
+}
 
+/* The Card Itself */
+.cert-card {
+  background-color: var(--bg-surface); /* A subtle dark grey/blue, similar to GitHub dark mode */
+  border: 2px solid var(--border); /* Very faint border to give it shape */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 20px;
+  margin-bottom: 24px;
+  /* Flexbox makes the text and button sit next to each other */
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Optional: Slight hover effect on the whole card */
+.cert-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(11, 229, 253, 0.4);
+}
+
+/* Typography inside the card */
+.cert-title {
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 4px 0; /* Pushes the provider text down slightly */
+}
+
+.cert-provider {
+  color: rgb(11, 229, 253); /* Your cyan color for the provider */
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+  .cert-card {
+    flex-direction: column; /* Stacks text on top of button on small screens */
+    align-items: flex-start;
+    gap: 16px; /* Space between text and button */
+  }
+}
 /* Smartphone Adjustments */
 @media (max-width: 768px) {
     
