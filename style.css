@@ -533,3 +533,162 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 #certifications {
   scroll-margin-top: 70px; 
 }
+#research-focus {
+  scroll-margin-top: 150px; 
+}
+
+/* --- 1. The Section Layout for Research container --- */
+.research-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* THIS FIXES THE WIDE SCREEN ISSUE */
+  max-width: 850px; 
+  margin: 40px auto; /* Centers the container */
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #10141b 0%, #0a0c10 100%);
+  border: 1px solid #1e2532;
+  border-radius: 12px;
+  padding: 40px;
+  gap: 40px;
+}
+.research-container:hover { border-color: var(--primary); transform: translateY(-5px); }
+/* --- 2. Typography --- */
+.research-badge {
+  display: inline-block;
+  color: #000909;
+  background-color: var(--primary, #0be5fd); /* Using your exact cyan */
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.research-title {
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+}
+
+.research-subtitle {
+  color: var(--primary, #0be5fd);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+}
+
+.research-desc {
+  color: #a0abbc;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* --- 3. The Cyber Battery Structure --- */
+.battery-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+}
+
+.cyber-battery {
+  position: relative;
+  width: 60px;
+  height: 110px;
+  border: 3px solid #30363d;
+  border-radius: 6px;
+  background-color: #0a0c10;
+  padding: 4px; /* Space between outer shell and inner fluid */
+}
+
+/* The little bump on top of the battery */
+.battery-terminal {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 8px;
+  background-color: #30363d;
+  border-radius: 4px 4px 0 0;
+}
+
+/* --- 4. The Charging Animation --- */
+.battery-level {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  background-color: rgba(11, 229, 253, 0.9);
+  border-radius: 2px;
+  /* Runs the animation below infinitely */
+  animation: cyberCharge 3.5s ease-in-out infinite; 
+}
+
+/* The actual charging logic */
+@keyframes cyberCharge {
+  0% {
+    height: 10%;
+    background-color: rgba(11, 229, 253, 0.3);
+    box-shadow: 0 0 5px rgba(11, 229, 253, 0.1);
+  }
+  70% {
+    height: 94%; /* Fills the battery */
+    background-color: rgba(11, 229, 253, 1);
+    box-shadow: 0 0 20px rgba(11, 229, 253, 0.6);
+  }
+  90% {
+    height: 94%;
+    background-color: #ffffff; /* Flashes white when full */
+    box-shadow: 0 0 40px rgba(11, 229, 253, 1);
+  }
+  100% {
+    height: 10%; /* Resets to empty */
+    background-color: rgba(11, 229, 253, 0.3);
+    box-shadow: 0 0 5px rgba(11, 229, 253, 0.1);
+  }
+}
+
+/* --- 5. Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .research-container {
+    flex-direction: column; /* Stacks text on top of battery */
+    text-align: center;
+    padding: 20px 15px;
+    margin: 20px 15px;
+    gap:15px;
+    width: auto;
+  }
+
+  .research-badge {
+    font-size: 0.7rem; /* Shrinks the label */
+    padding: 2px 8px;
+    margin-bottom: 8px;
+  }
+
+  .research-title {
+    font-size: 1.5rem;  /* Smaller title so it doesn't wrap awkwardly */
+  }
+
+  .research-subtitle {
+    font-size: 1rem;
+  }
+  
+  .research-desc {
+    font-size: 0.9rem;  /* Smaller, more readable mobile text */
+    line-height: 1.4;
+  }
+  .battery-wrapper {
+    margin-top: 10px;
+    width: 100%; /* Ensures it centers within the column */
+  }
+}
