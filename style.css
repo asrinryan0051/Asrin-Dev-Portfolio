@@ -577,7 +577,7 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 
 .research-subtitle {
   color: var(--primary, #0be5fd);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-main);
   font-size: 1.2rem;
   font-weight: 400;
   margin: 0 0 16px 0;
@@ -585,7 +585,7 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 
 .research-desc {
   color: #a0abbc;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-code);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 500px;
