@@ -680,11 +680,11 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
   }
 
   .research-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   
   .research-desc {
-    font-size: 1rem;  /* Smaller, more readable mobile text */
+    font-size: 1.2rem;  /* Smaller, more readable mobile text */
     line-height: 1.4;
   }
   .battery-wrapper {
