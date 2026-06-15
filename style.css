@@ -585,7 +585,7 @@ footer { padding: 50px 0; border-top: 1px solid var(--border); margin-top: 100px
 
 .research-desc {
   color: #a0abbc;
-  font-family: var(--font-code);
+  font-family: var(--font-main);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 500px;
